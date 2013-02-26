@@ -1,4 +1,4 @@
-penny
+Penny
 =====
 
-penny
+Money savin' the easy way.
