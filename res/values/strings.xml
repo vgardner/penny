@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Penny</string>
+ 	<!-- Settings -->
+    <string name="menu_settings">Settings</string>
+    <!-- General -->
+	<string name="title">Penny</string>
+	<string name="hello_world">Hello world!</string>
+	<!-- Set up pages -->
+	<string name="title_section1">Welcome</string>
+	<string name="text_section1">Penny allows you to save money on things you resist to purchase, by transferring cash from your account and storing it for you till you reach the goals you set up.</string>
+	<string name="sub_section1">Welcome to goal orientated saving</string>
+  
+	<string name="title_section2">What?</string>
+	<string name="text_section2">Your money is yours even if its not in your immediate reach. You can have it back whenever you like. Allow 4 bankdays, banc standard.</string>
+	<string name="sub_section2">Can I have my Money back whenever I want?</string>
+	
+	<string name="title_section3">How?</string>
+	<string name="text_section3">We charge you up to 2% for the transaction fee. So that £12 for a snowboard worth £600. Could be worth it.. How safe is it? We use GoCardless as a third hand party for transactions who have a transaction FSA approval, who work with RBS (Royal Bank of Scotland).</string>
+	<string name="sub_section3">Any hidden costs?</string>
+	
+    <string name="title_section4">Let\'s go!</string>
+    <string name="text_section4">Let\'s go!</string>
+    <string name="sub_section4">Let\'s go!</string>
+</resources>
