@@ -1,4 +1,6 @@
-package com.charcade.givr;
+package com.charcade.penny;
+
+import com.charcade.penny.R;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
