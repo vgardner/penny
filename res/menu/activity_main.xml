@@ -13,7 +13,12 @@
           android:title="@string/menu_send"
           android:showAsAction="ifRoom|withText" />
 	<item android:id="@+id/menu_share"
-          android:icon="@android:drawable/ic_menu_share"
           android:title="@string/menu_share"
-          android:showAsAction="ifRoom|withText" />
+          android:showAsAction="ifRoom"
+          android:actionProviderClass="android.widget.ShareActionProvider" />
+	<item android:id="@+id/menu_search"
+          android:title="@string/menu_search"
+          android:icon="@android:drawable/ic_menu_search"
+          android:showAsAction="ifRoom|collapseActionView"
+          android:actionViewClass="android.widget.SearchView" />
 </menu>

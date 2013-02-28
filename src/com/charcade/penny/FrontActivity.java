@@ -1,6 +1,7 @@
 package com.charcade.penny;
 
 import android.app.ActionBar;
+import android.app.ActionBar.OnNavigationListener;
 import android.app.ActionBar.Tab;
 import android.app.FragmentTransaction;
 import android.content.ClipData;
@@ -17,13 +18,18 @@ import android.view.View.DragShadowBuilder;
 import android.view.View.OnDragListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.ShareActionProvider;
+import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
 public class FrontActivity extends FragmentActivity implements ActionBar.TabListener {
   
 /** Called when the activity is first created. */
-
+  private ShareActionProvider mShareActionProvider;
+private OnNavigationListener mOnNavigationListener;
+	
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -123,7 +129,7 @@ public class FrontActivity extends FragmentActivity implements ActionBar.TabList
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 	    MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.activity_main, menu);
+	    inflater.inflate(R.menu.activity_main, menu);	
 	    return true;
 	}
 

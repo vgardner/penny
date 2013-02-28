@@ -6,6 +6,12 @@
     <string name="menu_save">Save</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+    <string name="menu_search">Search</string>
+     <string-array name="menu_action_list">
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+    </string-array>
     <!-- General -->
 	<string name="title">Penny</string>
 	<string name="hello_world">Hello world!</string>
