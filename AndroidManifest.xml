@@ -16,6 +16,11 @@
         <activity
             android:name="com.charcade.penny.TutorialActivity"
             android:label="@string/app_name" >
+            
+        </activity>
+        <activity
+            android:name="com.charcade.penny.FrontActivity"
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
