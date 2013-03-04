@@ -18,11 +18,11 @@ import android.view.View.DragShadowBuilder;
 import android.view.View.OnDragListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ShareActionProvider;
-import android.widget.SpinnerAdapter;
 import android.widget.Toast;
+
+import com.slidingmenu.lib.SlidingMenu;
 
 public class FrontActivity extends FragmentActivity implements ActionBar.TabListener {
   
@@ -34,6 +34,18 @@ private OnNavigationListener mOnNavigationListener;
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.front_main);
+    
+    // configure the SlidingMenu
+    SlidingMenu menu = new SlidingMenu(this);
+    menu.setMode(SlidingMenu.LEFT);
+    menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+    menu.setShadowWidthRes(R.dimen.shadow_width);
+    menu.setShadowDrawable(R.drawable.shadow);
+    menu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
+    menu.setFadeDegree(0.35f);
+    menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
+    menu.setMenu(R.layout.menu);
+    
     // First row.
     findViewById(R.id.myimage1).setOnTouchListener(new MyTouchListener());
     findViewById(R.id.myimage2).setOnTouchListener(new MyTouchListener());
