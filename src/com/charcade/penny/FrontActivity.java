@@ -51,7 +51,7 @@ public class FrontActivity extends FragmentActivity implements ActionBar.TabList
     slidingMenu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
     slidingMenu.setFadeDegree(0.35f);
     slidingMenu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
-    slidingMenu.setMenu(R.layout.menu);
+    slidingMenu.setMenu(R.layout.sliding_menu);
     
     // First row.
     findViewById(R.id.myimage1).setOnTouchListener(new MyTouchListener());
