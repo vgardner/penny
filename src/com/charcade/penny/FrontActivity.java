@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.DragEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.DragShadowBuilder;
@@ -28,23 +29,29 @@ public class FrontActivity extends FragmentActivity implements ActionBar.TabList
   
 /** Called when the activity is first created. */
   private ShareActionProvider mShareActionProvider;
-private OnNavigationListener mOnNavigationListener;
+  private OnNavigationListener mOnNavigationListener;
+  private SlidingMenu slidingMenu;
 	
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.front_main);
     
+    // Set up the action bar.
+    final ActionBar actionBar = getActionBar();
+    actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+    actionBar.setDisplayHomeAsUpEnabled(true);
+    
     // configure the SlidingMenu
-    SlidingMenu menu = new SlidingMenu(this);
-    menu.setMode(SlidingMenu.LEFT);
-    menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
-    menu.setShadowWidthRes(R.dimen.shadow_width);
-    menu.setShadowDrawable(R.drawable.shadow);
-    menu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
-    menu.setFadeDegree(0.35f);
-    menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
-    menu.setMenu(R.layout.menu);
+    slidingMenu = new SlidingMenu(this);
+    slidingMenu.setMode(SlidingMenu.LEFT);
+    slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+    slidingMenu.setShadowWidthRes(R.dimen.shadow_width);
+    slidingMenu.setShadowDrawable(R.drawable.shadow);
+    slidingMenu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
+    slidingMenu.setFadeDegree(0.35f);
+    slidingMenu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
+    slidingMenu.setMenu(R.layout.menu);
     
     // First row.
     findViewById(R.id.myimage1).setOnTouchListener(new MyTouchListener());
@@ -144,5 +151,14 @@ private OnNavigationListener mOnNavigationListener;
 	    inflater.inflate(R.menu.activity_main, menu);	
 	    return true;
 	}
-
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle item selection
+	    switch (item.getItemId()) {
+	        case android.R.id.home:
+	        	slidingMenu.toggle();
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
+	}
 } 
