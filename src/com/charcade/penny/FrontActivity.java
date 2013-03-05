@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.ShareActionProvider;
 import android.widget.Toast;
 
@@ -110,7 +111,7 @@ public class FrontActivity extends BaseActivity {
         View view = (View) event.getLocalState();
         ViewGroup owner = (ViewGroup) view.getParent();
         owner.removeView(view);
-        LinearLayout container = (LinearLayout) v;
+        RelativeLayout container = (RelativeLayout) v;
         container.addView(view);
         view.setVisibility(View.VISIBLE);
         break;
