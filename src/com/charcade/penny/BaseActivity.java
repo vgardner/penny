@@ -28,7 +28,6 @@ public class BaseActivity extends FragmentActivity {
 
 	    // Set up the action bar.
 	    final ActionBar actionBar = getActionBar();
-	    actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 	    actionBar.setDisplayHomeAsUpEnabled(true);
 	    
 	}
