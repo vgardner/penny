@@ -1,17 +1,11 @@
 package com.charcade.penny;
 
-import android.app.ActionBar;
 import android.app.ActionBar.OnNavigationListener;
-import android.app.ActionBar.Tab;
-import android.app.FragmentTransaction;
 import android.content.ClipData;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.DragEvent;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -19,7 +13,9 @@ import android.view.View.DragShadowBuilder;
 import android.view.View.OnDragListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.ShareActionProvider;
 import android.widget.Toast;
 
@@ -47,10 +43,22 @@ public class FrontActivity extends BaseActivity {
     slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
     slidingMenu.setShadowWidthRes(R.dimen.shadow_width);
     slidingMenu.setShadowDrawable(R.drawable.shadow);
-    slidingMenu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
+    //slidingMenu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
+    slidingMenu.setBehindWidthRes(R.dimen.slidingmenu_width);
     slidingMenu.setFadeDegree(0.35f);
     slidingMenu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
-    slidingMenu.setMenu(R.layout.sliding_menu);
+    slidingMenu.setMenu(R.layout.left_menu);
+    
+    // Populate ListView
+    ListView listView = (ListView) findViewById(R.id.menu_list);
+    String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
+      "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
+      "Linux", "OS/2" };
+    
+    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+      android.R.layout.simple_list_item_1, android.R.id.text1, values);
+    // Assign adapter to ListView
+    listView.setAdapter(adapter);
         
     // First row.
     findViewById(R.id.myimage1).setOnTouchListener(new MyTouchListener());
