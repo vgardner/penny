@@ -25,8 +25,11 @@ import android.widget.Toast;
 
 import com.slidingmenu.lib.SlidingMenu;
 
-public class FrontActivity extends FragmentActivity implements ActionBar.TabListener {
+public class FrontActivity extends BaseActivity {
   
+	public FrontActivity() {
+		super(R.string.app_name);
+	}
 /** Called when the activity is first created. */
   private ShareActionProvider mShareActionProvider;
   private OnNavigationListener mOnNavigationListener;
@@ -35,12 +38,8 @@ public class FrontActivity extends FragmentActivity implements ActionBar.TabList
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+
     setContentView(R.layout.front_main);
-    
-    // Set up the action bar.
-    final ActionBar actionBar = getActionBar();
-    actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-    actionBar.setDisplayHomeAsUpEnabled(true);
     
     // configure the SlidingMenu
     slidingMenu = new SlidingMenu(this);
@@ -52,7 +51,7 @@ public class FrontActivity extends FragmentActivity implements ActionBar.TabList
     slidingMenu.setFadeDegree(0.35f);
     slidingMenu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
     slidingMenu.setMenu(R.layout.sliding_menu);
-    
+        
     // First row.
     findViewById(R.id.myimage1).setOnTouchListener(new MyTouchListener());
     findViewById(R.id.myimage2).setOnTouchListener(new MyTouchListener());
@@ -127,31 +126,7 @@ public class FrontActivity extends FragmentActivity implements ActionBar.TabList
       return true;
     }
   }
-
-	@Override
-	public void onTabReselected(Tab tab, FragmentTransaction ft) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	@Override
-	public void onTabSelected(Tab tab, FragmentTransaction ft) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	@Override
-	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-	    MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.activity_main, menu);	
-	    return true;
-	}
-	@Override
+  @Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    // Handle item selection
 	    switch (item.getItemId()) {
