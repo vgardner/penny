@@ -51,12 +51,11 @@ public class FrontActivity extends BaseActivity {
     
     // Populate ListView
     ListView listView = (ListView) findViewById(R.id.menu_list);
-    String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
-      "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
-      "Linux", "OS/2" };
+    String[] values = new String[] { "Username", "Savings", "Newsfeed",
+      "My habits", "My goals", "Settings" };
     
     ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-      android.R.layout.simple_list_item_1, android.R.id.text1, values);
+      android.R.layout.simple_list_item_2, android.R.id.text1, values);
     // Assign adapter to ListView
     listView.setAdapter(adapter);
         
