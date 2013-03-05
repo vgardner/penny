@@ -62,24 +62,13 @@ public class FrontActivity extends BaseActivity {
     // First row.
     findViewById(R.id.myimage1).setOnTouchListener(new MyTouchListener());
     findViewById(R.id.myimage2).setOnTouchListener(new MyTouchListener());
-    findViewById(R.id.myimage3).setOnTouchListener(new MyTouchListener());
-    findViewById(R.id.myimage4).setOnTouchListener(new MyTouchListener());
     findViewById(R.id.topleft).setOnDragListener(new MyDragListener());
     findViewById(R.id.topright).setOnDragListener(new MyDragListener());
-    findViewById(R.id.bottomleft).setOnDragListener(new MyDragListener());
-    findViewById(R.id.bottomright).setOnDragListener(new MyDragListener());
     
     // Second row.
     findViewById(R.id.box1obj).setOnTouchListener(new MyTouchListener());
-    findViewById(R.id.box2obj).setOnTouchListener(new MyTouchListener());
-    findViewById(R.id.box3obj).setOnTouchListener(new MyTouchListener());
-    findViewById(R.id.box4obj).setOnTouchListener(new MyTouchListener());
     findViewById(R.id.box1).setOnDragListener(new MyDragListener());
-    findViewById(R.id.box2).setOnDragListener(new MyDragListener());
-    findViewById(R.id.box3).setOnDragListener(new MyDragListener());
-    findViewById(R.id.box4).setOnDragListener(new MyDragListener());
     findViewById(R.id.box5).setOnDragListener(new MyDragListener());
-    
   }
 
   private final class MyTouchListener implements OnTouchListener {

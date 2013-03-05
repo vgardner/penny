@@ -7,6 +7,7 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
     <string name="menu_search">Search</string>
+    <string name="menu_add">Add</string>
     <!-- Test -->
     <string name="properties">SlidingMenu Properties</string>
     <string name="general">General</string>
