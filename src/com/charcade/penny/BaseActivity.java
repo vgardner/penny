@@ -49,4 +49,18 @@ public class BaseActivity extends FragmentActivity {
 	    inflater.inflate(R.menu.activity_main, menu);	
 	    return true;
 	}
+	
+	public void enableSlidingMenu(SlidingMenu slidingMenu){
+		// configure the SlidingMenu
+	    slidingMenu = new SlidingMenu(this);
+	    slidingMenu.setMode(SlidingMenu.LEFT);
+	    slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+	    slidingMenu.setShadowWidthRes(R.dimen.shadow_width);
+	    slidingMenu.setShadowDrawable(R.drawable.shadow);
+	    //slidingMenu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
+	    slidingMenu.setBehindWidthRes(R.dimen.slidingmenu_width);
+	    slidingMenu.setFadeDegree(0.35f);
+	    slidingMenu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
+	    slidingMenu.setMenu(R.layout.left_menu);
+	}
 }
