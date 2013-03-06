@@ -8,6 +8,8 @@ import android.support.v4.app.ListFragment;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.slidingmenu.lib.SlidingMenu;
 
@@ -61,5 +63,15 @@ public class BaseActivity extends FragmentActivity {
 	    slidingMenu.setFadeDegree(0.35f);
 	    slidingMenu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
 	    slidingMenu.setMenu(R.layout.left_menu);
+	    
+	    // Populate ListView
+	    ListView listView = (ListView) findViewById(R.id.menu_list);
+	    String[] values = new String[] { "Username", "Savings", "Newsfeed",
+	      "My habits", "My goals", "Settings" };
+	    
+	    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+	      android.R.layout.simple_list_item_2, android.R.id.text1, values);
+	    // Assign adapter to ListView
+	    listView.setAdapter(adapter);
 	}
 }

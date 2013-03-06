@@ -40,16 +40,6 @@ public class HomeActivity extends BaseActivity {
     
     enableSlidingMenu(slidingMenu);
     
-    // Populate ListView
-    ListView listView = (ListView) findViewById(R.id.menu_list);
-    String[] values = new String[] { "Username", "Savings", "Newsfeed",
-      "My habits", "My goals", "Settings" };
-    
-    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-      android.R.layout.simple_list_item_2, android.R.id.text1, values);
-    // Assign adapter to ListView
-    listView.setAdapter(adapter);
-        
     // First row.
     findViewById(R.id.myimage1).setOnTouchListener(new MyTouchListener());
     findViewById(R.id.myimage2).setOnTouchListener(new MyTouchListener());
