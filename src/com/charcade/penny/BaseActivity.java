@@ -1,15 +1,15 @@
 package com.charcade.penny;
 
-import com.slidingmenu.lib.SlidingMenu;
-import com.slidingmenu.lib.app.SlidingFragmentActivity;
-
 import android.app.ActionBar;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.ListFragment;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+
+import com.slidingmenu.lib.SlidingMenu;
 
 public class BaseActivity extends FragmentActivity {
 
@@ -29,7 +29,6 @@ public class BaseActivity extends FragmentActivity {
 	    // Set up the action bar.
 	    final ActionBar actionBar = getActionBar();
 	    actionBar.setDisplayHomeAsUpEnabled(true);
-	    
 	}
 
 	@Override
