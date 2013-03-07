@@ -1,4 +1,4 @@
-package com.charcade.penny.habit;
+package com.charcade.penny.entities;
 
 import java.math.BigDecimal;
 import java.security.Timestamp;
