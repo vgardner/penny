@@ -3,6 +3,7 @@ package com.charcade.penny;
 import android.app.ActionBar.OnNavigationListener;
 import android.content.ClipData;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.DragEvent;
@@ -13,13 +14,11 @@ import android.view.View.DragShadowBuilder;
 import android.view.View.OnDragListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.ShareActionProvider;
 import android.widget.Toast;
 
+import com.charcade.penny.habits.AddHabitActivity;
 import com.slidingmenu.lib.SlidingMenu;
 
 public class HomeActivity extends BaseActivity {
@@ -109,6 +108,9 @@ public class HomeActivity extends BaseActivity {
 	    switch (item.getItemId()) {
 	        case android.R.id.home:
 	        	slidingMenu.toggle();
+	        case R.id.menu_add:
+	        	Intent intent = new Intent(this, AddHabitActivity.class);
+	        	startActivity(intent);
 	        default:
 	            return super.onOptionsItemSelected(item);
 	    }

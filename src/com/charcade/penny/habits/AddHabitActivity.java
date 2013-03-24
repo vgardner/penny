@@ -35,10 +35,8 @@ public class AddHabitActivity extends BaseActivity {
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-    setContentView(R.layout.front_main);
-    
-    enableSlidingMenu(slidingMenu);
-    
+    setContentView(R.layout.habit_add);
+    enableSlidingMenu(slidingMenu);  
   }
   @Override
 	public boolean onOptionsItemSelected(MenuItem item) {
