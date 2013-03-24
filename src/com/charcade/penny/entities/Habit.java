@@ -6,23 +6,24 @@ import java.security.Timestamp;
 import android.R.bool;
 
 public class Habit {
-	private int id;
+	private int hid;
 	private String name;
 	private BigDecimal value;
 	private int weight;
 	private Boolean visible;
 	private Timestamp created;
 	private Timestamp updated;
+	private String icon;
 	
 	public Habit(){
 		
 	}
-	public int getId() {
-		return id;
+	public int getHid() {
+		return hid;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setHid(int hid) {
+		this.hid = hid;
 	}
 
 	public String getName() {
@@ -71,5 +72,11 @@ public class Habit {
 
 	public void setUpdated(Timestamp updated) {
 		this.updated = updated;
+	}
+	public String getIcon() {
+		return icon;
+	}
+	public void setIcon(String icon) {
+		this.icon = icon;
 	}
 }
