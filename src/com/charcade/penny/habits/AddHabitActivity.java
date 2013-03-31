@@ -1,24 +1,22 @@
 package com.charcade.penny.habits;
 
 import android.app.ActionBar.OnNavigationListener;
-import android.content.ClipData;
+import android.content.ContentValues;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.view.DragEvent;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.DragShadowBuilder;
-import android.view.View.OnDragListener;
-import android.view.View.OnTouchListener;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.SeekBar;
 import android.widget.ShareActionProvider;
 import android.widget.Toast;
 
 import com.charcade.penny.BaseActivity;
 import com.charcade.penny.R;
+import com.charcade.penny.db.HabitDbHelper;
+import com.charcade.penny.db.HabitDbMap;
 import com.slidingmenu.lib.SlidingMenu;
 
 public class AddHabitActivity extends BaseActivity {
@@ -36,16 +34,51 @@ public class AddHabitActivity extends BaseActivity {
     super.onCreate(savedInstanceState);
 
     setContentView(R.layout.habit_add);
-    enableSlidingMenu(slidingMenu);  
+    enableSlidingMenu(slidingMenu);
+    
+    Button buttonOne = (Button) findViewById(R.id.habit_save);
+    buttonOne.setOnClickListener(new Button.OnClickListener() {
+        public void onClick(View v) {
+        	Context context = getApplicationContext();
+        	CharSequence text = "Hello toast!";
+        	int duration = Toast.LENGTH_SHORT;
+        	
+        	EditText habitName = (EditText) findViewById(R.id.habit_name);
+        	String habitNameText = habitName.getText().toString();
+        	
+        	SeekBar habitPrice = (SeekBar) findViewById(R.id.habit_price);
+        	int habitPriceValue = habitPrice.getProgress();
+           	
+        	Toast toast = Toast.makeText(context, String.valueOf(habitPriceValue), duration);
+        	toast.show();
+        	
+        	createHabit(habitNameText, String.valueOf(habitPriceValue));
+        }
+    });
   }
   @Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-	    // Handle item selection
-	    switch (item.getItemId()) {
-	        case android.R.id.home:
-	        	slidingMenu.toggle();
-	        default:
-	            return super.onOptionsItemSelected(item);
-	    }
-	}
-} 
+  public boolean onOptionsItemSelected(MenuItem item) {
+    // Handle item selection
+    switch (item.getItemId()) {
+        case android.R.id.home:
+        	slidingMenu.toggle();
+        default:
+            return super.onOptionsItemSelected(item);
+    }
+  }
+  public void createHabit(String title, String value){
+	  HabitDbHelper mDbHelper = new HabitDbHelper(this);
+	  SQLiteDatabase db = mDbHelper.getWritableDatabase();
+	  
+	  ContentValues values = new ContentValues();
+	  values.put(HabitDbMap.COLUMN_NAME_NAME, title);
+	  values.put(HabitDbMap.COLUMN_NAME_VALUE, value);
+
+	  // Insert the new row, returning the primary key value of the new row
+	  long newRowId;
+	  newRowId = db.insert(
+			  HabitDbMap.TABLE_NAME,
+			  "null",
+	           values);
+  }
+}
