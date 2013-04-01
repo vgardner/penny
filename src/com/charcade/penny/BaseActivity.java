@@ -51,7 +51,7 @@ public class BaseActivity extends FragmentActivity {
 	    return true;
 	}
 	
-	public void enableSlidingMenu(SlidingMenu slidingMenu){
+	public SlidingMenu enableSlidingMenu(SlidingMenu slidingMenu){
 		// configure the SlidingMenu
 	    slidingMenu = new SlidingMenu(this);
 	    slidingMenu.setMode(SlidingMenu.LEFT);
@@ -73,5 +73,6 @@ public class BaseActivity extends FragmentActivity {
 	      android.R.layout.simple_list_item_2, android.R.id.text1, values);
 	    // Assign adapter to ListView
 	    listView.setAdapter(adapter);
+	    return slidingMenu;
 	}
 }

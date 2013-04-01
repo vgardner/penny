@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.charcade.penny.BaseActivity;
 import com.charcade.penny.R;
 import com.charcade.penny.db.HabitDbHelper;
+import com.charcade.penny.db.HabitDbManager;
 import com.charcade.penny.db.HabitDbMap;
 import com.slidingmenu.lib.SlidingMenu;
 
@@ -67,18 +68,7 @@ public class AddHabitActivity extends BaseActivity {
     }
   }
   public void createHabit(String title, String value){
-	  HabitDbHelper mDbHelper = new HabitDbHelper(this);
-	  SQLiteDatabase db = mDbHelper.getWritableDatabase();
-	  
-	  ContentValues values = new ContentValues();
-	  values.put(HabitDbMap.COLUMN_NAME_NAME, title);
-	  values.put(HabitDbMap.COLUMN_NAME_VALUE, value);
-
-	  // Insert the new row, returning the primary key value of the new row
-	  long newRowId;
-	  newRowId = db.insert(
-			  HabitDbMap.TABLE_NAME,
-			  "null",
-	           values);
+	  HabitDbManager habitDbManager = new HabitDbManager(this);
+	  habitDbManager.createHabit(title, value);
   }
 }

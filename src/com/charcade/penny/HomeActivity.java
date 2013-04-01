@@ -45,32 +45,10 @@ public class HomeActivity extends BaseActivity {
 
     setContentView(R.layout.front_main);
     
-    enableSlidingMenu(slidingMenu);
+    slidingMenu = enableSlidingMenu(slidingMenu);
     
-    HabitDbManager habitDbManager = new HabitDbManager(this);
-    
-    ArrayList<Habit> habitList = habitDbManager.getHabitList();
-    
-    // Populate list of habits.
-    for (Habit currentHabit : habitList) {
-        LayoutInflater vi = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        RelativeLayout habitItemLayout = (RelativeLayout) vi.inflate(R.layout.habit_item, null);
-        
-        // Edit LayoutParams in habitItem.
-        RelativeLayout habitItem = (RelativeLayout) habitItemLayout.findViewById(R.id.habit_item);
-        LinearLayout.LayoutParams params =
-                new LinearLayout.LayoutParams(400, 420);
-        habitItem.setLayoutParams(params);
-        habitItem.setOnDragListener(new MyDragListener());
-        
-        // Adding values to habit image icon.
-        ImageView habitItemIcon = (ImageView) habitItemLayout.findViewById(R.id.habit_item_icon);
-        habitItemIcon.setImageResource(R.drawable.ic_beer);
-        habitItemIcon.setOnTouchListener(new MyTouchListener());
-        
-        LinearLayout habitRow = (LinearLayout) findViewById(R.id.layout_row_habits);
-        habitRow.addView(habitItem);
-    }
+    //Populate habits list.
+    populateHabits();
     
     // Second row.
     findViewById(R.id.box1obj).setOnTouchListener(new MyTouchListener());
@@ -135,11 +113,45 @@ public class HomeActivity extends BaseActivity {
 	    switch (item.getItemId()) {
 	        case android.R.id.home:
 	        	slidingMenu.toggle();
+	        break;
 	        case R.id.menu_add:
 	        	Intent intent = new Intent(this, AddHabitActivity.class);
 	        	startActivity(intent);
 	        default:
 	            return super.onOptionsItemSelected(item);
 	    }
+		return false;
 	}
+  public void refreshHabits(){
+	  populateHabits();
+  }
+  public void populateHabits(){
+    HabitDbManager habitDbManager = new HabitDbManager(this);
+    ArrayList<Habit> habitList = habitDbManager.getHabitList();
+    
+    // Populate list of habits.
+    for (Habit currentHabit : habitList) {
+        LayoutInflater vi = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        RelativeLayout habitItemLayout = (RelativeLayout) vi.inflate(R.layout.habit_item, null);
+        
+        // Edit LayoutParams in habitItem.
+        RelativeLayout habitItem = (RelativeLayout) habitItemLayout.findViewById(R.id.habit_item);
+        LinearLayout.LayoutParams params =
+                new LinearLayout.LayoutParams(400, 420);
+        habitItem.setLayoutParams(params);
+        habitItem.setOnDragListener(new MyDragListener());
+        
+        // Adding values to habit image icon.
+        ImageView habitItemIcon = (ImageView) habitItemLayout.findViewById(R.id.habit_item_icon);
+        habitItemIcon.setImageResource(R.drawable.ic_beer);
+        habitItemIcon.setOnTouchListener(new MyTouchListener());
+        
+        // Adding values to habit image icon.
+        TextView habitItemText = (TextView) habitItemLayout.findViewById(R.id.habit_item_text);
+        habitItemText.setText(currentHabit.getName());
+        
+        LinearLayout habitRow = (LinearLayout) findViewById(R.id.layout_row_habits);
+        habitRow.addView(habitItem);
+    }
+  }
 } 
