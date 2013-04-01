@@ -70,7 +70,7 @@ public class AddHabitActivity extends BaseActivity {
     // Handle item selection
     switch (item.getItemId()) {
         case android.R.id.home:
-        	slidingMenu.toggle();
+        	this.finish();
         default:
             return super.onOptionsItemSelected(item);
     }
