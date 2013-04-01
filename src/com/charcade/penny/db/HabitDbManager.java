@@ -21,14 +21,12 @@ public class HabitDbManager {
 	  mDbHelper = new HabitDbHelper(context);
 	  db = mDbHelper.getWritableDatabase();
 	}
-	public void createHabit(String title, String value){	  
+	public long createHabit(String title, String value){	  
 	  ContentValues values = new ContentValues();
 	  values.put(HabitDbMap.COLUMN_NAME_NAME, title);
 	  values.put(HabitDbMap.COLUMN_NAME_VALUE, value);
 
-	  // Insert the new row, returning the primary key value of the new row
-	  long newRowId;
-	  newRowId = db.insert(
+	  return db.insert(
 			  HabitDbMap.TABLE_NAME,
 			  "null",
 	           values);

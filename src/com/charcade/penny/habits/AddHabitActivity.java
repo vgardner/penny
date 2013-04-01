@@ -53,7 +53,8 @@ public class AddHabitActivity extends BaseActivity {
         	Toast toast = Toast.makeText(context, String.valueOf(habitPriceValue), duration);
         	toast.show();
         	
-        	createHabit(habitNameText, String.valueOf(habitPriceValue));
+        	long newRowId = createHabit(habitNameText, String.valueOf(habitPriceValue));
+        	finish();
         }
     });
   }
@@ -67,8 +68,8 @@ public class AddHabitActivity extends BaseActivity {
             return super.onOptionsItemSelected(item);
     }
   }
-  public void createHabit(String title, String value){
+  public long createHabit(String title, String value){
 	  HabitDbManager habitDbManager = new HabitDbManager(this);
-	  habitDbManager.createHabit(title, value);
+	  return habitDbManager.createHabit(title, value);
   }
 }
