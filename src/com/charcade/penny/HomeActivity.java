@@ -55,7 +55,13 @@ public class HomeActivity extends BaseActivity {
     findViewById(R.id.box1).setOnDragListener(new MyDragListener());
     findViewById(R.id.box5).setOnDragListener(new MyDragListener());
   }
-
+  
+  @Override
+  public void onResume() {
+	  super.onResume();
+	  refreshHabits();
+  }
+  
   private final class MyTouchListener implements OnTouchListener {
     public boolean onTouch(View view, MotionEvent motionEvent) {
       if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
