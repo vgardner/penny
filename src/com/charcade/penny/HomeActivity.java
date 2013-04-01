@@ -135,6 +135,9 @@ public class HomeActivity extends BaseActivity {
     HabitDbManager habitDbManager = new HabitDbManager(this);
     ArrayList<Habit> habitList = habitDbManager.getHabitList();
     
+    LinearLayout habitRow = (LinearLayout) findViewById(R.id.layout_row_habits);
+    habitRow.removeAllViews();
+    
     // Populate list of habits.
     for (Habit currentHabit : habitList) {
         LayoutInflater vi = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -155,8 +158,7 @@ public class HomeActivity extends BaseActivity {
         // Adding values to habit image icon.
         TextView habitItemText = (TextView) habitItemLayout.findViewById(R.id.habit_item_text);
         habitItemText.setText(currentHabit.getName());
-        
-        LinearLayout habitRow = (LinearLayout) findViewById(R.id.layout_row_habits);
+       
         habitRow.addView(habitItem);
     }
   }

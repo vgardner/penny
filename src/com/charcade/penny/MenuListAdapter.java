@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,6 +58,7 @@ public class MenuListAdapter extends ArrayAdapter{
             convertView.setId(position);
             convertView.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
+
                 	if (v.getId() == 3) {
                 		Intent intent = new Intent(context, ListHabitsActivity.class);
                 		context.startActivity(intent);
