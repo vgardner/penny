@@ -17,6 +17,7 @@ import android.view.View.DragShadowBuilder;
 import android.view.View.OnDragListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ShareActionProvider;
@@ -51,13 +52,22 @@ public class HomeActivity extends BaseActivity {
     ArrayList<Habit> habitList = habitDbManager.getHabitList();
     
     for (Habit currentHabit : habitList) {
-        Toast.makeText(this, currentHabit.getName() + "yay", Toast.LENGTH_SHORT).show();
+    	
         LayoutInflater vi = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         RelativeLayout habitItemLayout = (RelativeLayout) vi.inflate(R.layout.habit_item, null);
-        // fill in any details dynamically here
+        
+        // Edit LayoutParams in habitItem.
+        RelativeLayout habitItem = (RelativeLayout) habitItemLayout.findViewById(R.id.habit_item);
+        LinearLayout.LayoutParams params =
+                new LinearLayout.LayoutParams(400, 420);
+        habitItem.setLayoutParams(params);
+        
+        // Adding values to habit image icon.
+        ImageView habitItemIcon = (ImageView) habitItemLayout.findViewById(R.id.habit_item_icon);
+        habitItemIcon.setImageResource(R.drawable.ic_beer);
         
         LinearLayout habitRow = (LinearLayout) findViewById(R.id.layout_row_habits);
-        habitRow.addView(habitItemLayout);
+        habitRow.addView(habitItem);
     }
     
     // First row.
