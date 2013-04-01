@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.DragEvent;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -16,8 +17,10 @@ import android.view.View.DragShadowBuilder;
 import android.view.View.OnDragListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ShareActionProvider;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.charcade.penny.db.HabitDbManager;
@@ -49,6 +52,12 @@ public class HomeActivity extends BaseActivity {
     
     for (Habit currentHabit : habitList) {
         Toast.makeText(this, currentHabit.getName() + "yay", Toast.LENGTH_SHORT).show();
+        LayoutInflater vi = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        RelativeLayout habitItemLayout = (RelativeLayout) vi.inflate(R.layout.habit_item, null);
+        // fill in any details dynamically here
+        
+        LinearLayout habitRow = (LinearLayout) findViewById(R.id.layout_row_habits);
+        habitRow.addView(habitItemLayout);
     }
     
     // First row.
