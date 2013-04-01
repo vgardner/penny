@@ -1,23 +1,16 @@
 package com.charcade.penny.habits;
 
 import android.app.ActionBar.OnNavigationListener;
-import android.content.ContentValues;
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.SeekBar;
 import android.widget.ShareActionProvider;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.charcade.penny.BaseActivity;
 import com.charcade.penny.R;
-import com.charcade.penny.db.HabitDbHelper;
 import com.charcade.penny.db.HabitDbManager;
-import com.charcade.penny.db.HabitDbMap;
+import com.charcade.penny.entities.Habit;
 import com.slidingmenu.lib.SlidingMenu;
 
 public class ViewHabitActivity extends BaseActivity {
@@ -36,8 +29,18 @@ public class ViewHabitActivity extends BaseActivity {
 
     setContentView(R.layout.habit_view);
     enableSlidingMenu(slidingMenu);
+    // Get parameters from intent.
+    Intent intent = getIntent();
+    String habitId = intent.getStringExtra("hid");
+    // Get habit db manager.
+    HabitDbManager habitDbManager = new HabitDbManager(this);
+    Habit habit = habitDbManager.getHabit(Integer.parseInt(habitId));
+    // Set view element texts and images.
+    this.setTitle(habit.getName());
     
-    //Button buttonOne = (Button) findViewById(R.id.habit_save);
+    TextView habitViewPriceText = (TextView) findViewById(R.id.habit_view_price_text);
+    habitViewPriceText.setText("$" + habit.getValue());
+    
   }
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {

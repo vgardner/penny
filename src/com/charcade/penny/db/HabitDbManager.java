@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.CursorIndexOutOfBoundsException;
 import android.database.sqlite.SQLiteDatabase;
 import android.widget.Toast;
 
@@ -21,6 +22,9 @@ public class HabitDbManager {
 	  mDbHelper = new HabitDbHelper(context);
 	  db = mDbHelper.getWritableDatabase();
 	}
+	/**
+	 * Save a new habit in the database.
+	 */
 	public long createHabit(String title, String value){	  
 	  ContentValues values = new ContentValues();
 	  values.put(HabitDbMap.COLUMN_NAME_NAME, title);
@@ -31,7 +35,23 @@ public class HabitDbManager {
 			  "null",
 	           values);
     }
-	
+	/**
+	 * Get a habit for a specific hid.
+	 */
+	public Habit getHabit(Integer hid){
+		Habit habit = new Habit();
+		try {
+			Cursor cursor = db.rawQuery("SELECT * FROM " + HabitDbMap.TABLE_NAME + " WHERE " + HabitDbMap.COLUMN_NAME_HID + " = '"+ hid + "'", null);
+			cursor.moveToFirst();
+			habit = getHabitFromCursor(cursor);
+		} catch (CursorIndexOutOfBoundsException e) {
+			Toast.makeText(context, "Nothing was found.", Toast.LENGTH_SHORT).show();
+		}
+		return habit;
+	}
+	/**
+	 * Get list of current habits in the database.
+	 */
     public ArrayList<Habit> getHabitList(){
     	ArrayList<Habit> habitList = new ArrayList<Habit>();
     	Cursor cursor = db.query(HabitDbMap.TABLE_NAME, new String[] {HabitDbMap.COLUMN_NAME_HID, HabitDbMap.COLUMN_NAME_NAME, HabitDbMap.COLUMN_NAME_VALUE}, 
@@ -40,12 +60,19 @@ public class HabitDbManager {
     	cursor.moveToFirst();
     	while (cursor.isAfterLast() == false) {
     		Habit currentHabit = new Habit();
-    		currentHabit.setHid(cursor.getInt(cursor.getColumnIndex(HabitDbMap.COLUMN_NAME_HID)));
-    		currentHabit.setName(cursor.getString(cursor.getColumnIndex(HabitDbMap.COLUMN_NAME_NAME)));
-    		currentHabit.setValue(BigDecimal.valueOf(cursor.getInt(cursor.getColumnIndex(HabitDbMap.COLUMN_NAME_VALUE))));
-    		habitList.add(currentHabit);
+    		habitList.add(getHabitFromCursor(cursor));
     	    cursor.moveToNext();
     	}
     	return habitList;
+    }
+    /**
+	 * Populates a habit from a db cursor.
+	 */
+    private Habit getHabitFromCursor(Cursor cursor) {
+    	Habit habit = new Habit();
+    	habit.setHid(cursor.getInt(cursor.getColumnIndex(HabitDbMap.COLUMN_NAME_HID)));
+    	habit.setName(cursor.getString(cursor.getColumnIndex(HabitDbMap.COLUMN_NAME_NAME)));
+    	habit.setValue(BigDecimal.valueOf(cursor.getInt(cursor.getColumnIndex(HabitDbMap.COLUMN_NAME_VALUE))));
+    	return habit;
     }
 }

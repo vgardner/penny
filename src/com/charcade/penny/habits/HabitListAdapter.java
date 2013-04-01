@@ -20,7 +20,8 @@ public class HabitListAdapter extends ArrayAdapter{
       private int resource;
       private LayoutInflater inflater;
       private Context context;
-
+      private Habit currentHabit;
+      
       public HabitListAdapter (Context ctx, int resourceId, List objects) {
 		super(ctx, resourceId, objects);
 		resource = resourceId;
@@ -36,25 +37,30 @@ public class HabitListAdapter extends ArrayAdapter{
 
             /* Extract the city's object to show */
             Habit habit = (Habit) getItem(position);
-
+            
             /* Take the TextView from layout and set the city's name */
-            TextView txtName = (TextView) convertView.findViewById(R.id.habit_list_name);
-            txtName.setText(habit.getName());
+            TextView habitName = (TextView) convertView.findViewById(R.id.habit_list_name);
+            habitName.setText(habit.getName());
 
             /* Take the TextView from layout and set the city's wiki link */
-            TextView txtWiki = (TextView) convertView.findViewById(R.id.habit_list_price);
-            txtWiki.setText(String.valueOf(habit.getValue()));
+            TextView habitPrice = (TextView) convertView.findViewById(R.id.habit_list_price);
+            habitPrice.setText(String.valueOf(habit.getValue()));
 
             /* Take the ImageView from layout and set the city's image */
-            ImageView imageCity = (ImageView) convertView.findViewById(R.id.habit_list_image);
+            ImageView habitImage = (ImageView) convertView.findViewById(R.id.habit_list_image);
             //String uri = "drawable/" + city.getImage();
             //int imageResource = context.getResources().getIdentifier(uri, null, context.getPackageName());
             //Drawable image = context.getResources().getDrawable(imageResource);
-            imageCity.setImageResource(R.drawable.ic_tea);
+            habitImage.setImageResource(R.drawable.ic_tea);
+            
+            // Assign habit id to view id.
+            convertView.setId(habit.getHid());
             
             convertView.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    context.startActivity(new Intent(context, ViewHabitActivity.class));
+                	Intent viewHabitIntent = new Intent(context, ViewHabitActivity.class);
+                	viewHabitIntent.putExtra("hid", String.valueOf(v.getId()));
+                    context.startActivity(viewHabitIntent);
                 }
             });
 
