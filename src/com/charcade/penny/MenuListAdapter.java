@@ -3,15 +3,19 @@ package com.charcade.penny;
 import java.util.List;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.charcade.penny.entities.MenuListItem;
+import com.charcade.penny.habits.AddHabitActivity;
+import com.charcade.penny.habits.ListHabitsActivity;
 
 public class MenuListAdapter extends ArrayAdapter{
 
@@ -34,7 +38,7 @@ public class MenuListAdapter extends ArrayAdapter{
 
             /* Extract the city's object to show */
             MenuListItem menuItem = (MenuListItem) getItem(position);
-
+            
             /* Take the TextView from layout and set the city's name */
             TextView txtName = (TextView) convertView.findViewById(R.id.menu_list_name);
             txtName.setText(menuItem.getTitle());
@@ -45,6 +49,16 @@ public class MenuListAdapter extends ArrayAdapter{
             //int imageResource = context.getResources().getIdentifier(uri, null, context.getPackageName());
             //Drawable image = context.getResources().getDrawable(imageResource);
             imageCity.setImageResource(R.drawable.ic_coffee);
+            
+            convertView.setId(position);
+            convertView.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                	if (v.getId() == 3) {
+                		Intent intent = new Intent(context, ListHabitsActivity.class);
+                		context.startActivity(intent);
+                	}
+                }
+            });
             return convertView;
       }
 }

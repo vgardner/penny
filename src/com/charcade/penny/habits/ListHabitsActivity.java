@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.app.ActionBar.OnNavigationListener;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -16,6 +17,7 @@ import android.widget.ShareActionProvider;
 import android.widget.TextView;
 
 import com.charcade.penny.BaseActivity;
+import com.charcade.penny.HomeActivity;
 import com.charcade.penny.R;
 import com.charcade.penny.db.HabitDbManager;
 import com.charcade.penny.entities.Habit;
@@ -44,7 +46,8 @@ public class ListHabitsActivity extends BaseActivity {
     // Handle item selection
     switch (item.getItemId()) {
         case android.R.id.home:
-        	slidingMenu.toggle();
+        	Intent intent = new Intent(this, HomeActivity.class);
+    		this.startActivity(intent);
         default:
             return super.onOptionsItemSelected(item);
     }
