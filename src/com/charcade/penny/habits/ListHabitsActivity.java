@@ -38,19 +38,32 @@ public class ListHabitsActivity extends BaseActivity {
     super.onCreate(savedInstanceState);
 
     setContentView(R.layout.habit_list);
+    setTitle("My Habits");
+    
     slidingMenu = enableSlidingMenu(slidingMenu);
     populateHabitList();
   }
+  
+  @Override
+  public void onResume() {
+	super.onResume();
+	populateHabitList();
+  }
+  
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
     // Handle item selection
     switch (item.getItemId()) {
         case android.R.id.home:
-        	Intent intent = new Intent(this, HomeActivity.class);
-    		this.startActivity(intent);
+    		this.startActivity(new Intent(this, HomeActivity.class));
+    	break;
+        case R.id.menu_add:
+    		this.startActivity(new Intent(this, AddHabitActivity.class));
+        break;
         default:
             return super.onOptionsItemSelected(item);
     }
+	return false;
   }
   public void populateHabitList(){
     HabitDbManager habitDbManager = new HabitDbManager(this);

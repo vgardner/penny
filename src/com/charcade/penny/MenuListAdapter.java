@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -44,11 +45,14 @@ public class MenuListAdapter extends ArrayAdapter{
             txtName.setText(menuItem.getTitle());
 
             /* Take the ImageView from layout and set the city's image */
-            ImageView imageCity = (ImageView) convertView.findViewById(R.id.menu_list_image);
+            ImageView menuIconImage = (ImageView) convertView.findViewById(R.id.menu_list_image);
             //String uri = "drawable/" + city.getImage();
             //int imageResource = context.getResources().getIdentifier(uri, null, context.getPackageName());
             //Drawable image = context.getResources().getDrawable(imageResource);
-            imageCity.setImageResource(R.drawable.ic_coffee);
+            menuIconImage.setImageResource(R.drawable.ic_coffee);
+            RelativeLayout.LayoutParams imageParams =
+                    new RelativeLayout.LayoutParams(100, 100);
+            menuIconImage.setLayoutParams(imageParams);
             
             convertView.setId(position);
             convertView.setOnClickListener(new View.OnClickListener() {
