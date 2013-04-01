@@ -20,10 +20,7 @@
         <activity
             android:name="com.charcade.penny.HomeActivity"
             android:label="@string/app_name" >
-           <intent-filter>
-	            <action android:name="android.intent.action.MAIN" />
-	            <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+          
         </activity>
         <activity
             android:name="com.charcade.penny.habits.AddHabitActivity"
@@ -31,8 +28,15 @@
         </activity>
         <activity
             android:name="com.charcade.penny.habits.ListHabitsActivity"
+            android:label="@string/app_name" >    
+        </activity>
+        <activity
+            android:name="com.charcade.penny.habits.ViewHabitActivity"
             android:label="@string/app_name" >
-             
+             <intent-filter>
+	            <action android:name="android.intent.action.MAIN" />
+	            <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>     
         </activity>
     </application>
 

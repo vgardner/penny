@@ -3,7 +3,7 @@ package com.charcade.penny.habits;
 import java.util.List;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import com.charcade.penny.R;
 import com.charcade.penny.entities.Habit;
 
@@ -50,6 +51,13 @@ public class HabitListAdapter extends ArrayAdapter{
             //int imageResource = context.getResources().getIdentifier(uri, null, context.getPackageName());
             //Drawable image = context.getResources().getDrawable(imageResource);
             imageCity.setImageResource(R.drawable.ic_tea);
+            
+            convertView.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    context.startActivity(new Intent(context, ViewHabitActivity.class));
+                }
+            });
+
             return convertView;
       }
 }
