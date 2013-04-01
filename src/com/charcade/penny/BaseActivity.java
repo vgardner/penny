@@ -1,16 +1,17 @@
 package com.charcade.penny;
 
+import java.util.ArrayList;
+
 import android.app.ActionBar;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.ListFragment;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.charcade.penny.entities.MenuListItem;
 import com.slidingmenu.lib.SlidingMenu;
 
 public class BaseActivity extends FragmentActivity {
@@ -62,17 +63,22 @@ public class BaseActivity extends FragmentActivity {
 	    slidingMenu.setBehindWidthRes(R.dimen.slidingmenu_width);
 	    slidingMenu.setFadeDegree(0.35f);
 	    slidingMenu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
-	    slidingMenu.setMenu(R.layout.left_menu);
+	    slidingMenu.setMenu(R.layout.left_menu_list);
 	    
 	    // Populate ListView
 	    ListView listView = (ListView) findViewById(R.id.menu_list);
-	    String[] values = new String[] { "Username", "Savings", "Newsfeed",
-	      "My habits", "My goals", "Settings" };
+
+        ArrayList<MenuListItem> menuList = new ArrayList<MenuListItem>();
+        
+        menuList.add(new MenuListItem("Username"));
+        menuList.add(new MenuListItem("Savings"));
+        menuList.add(new MenuListItem("Newsfeed"));
+        menuList.add(new MenuListItem("My Habits"));
+        menuList.add(new MenuListItem("My Goals"));
+        menuList.add(new MenuListItem("Settings"));
 	    
-	    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-	      android.R.layout.simple_list_item_2, android.R.id.text1, values);
 	    // Assign adapter to ListView
-	    listView.setAdapter(adapter);
+	    listView.setAdapter(new MenuListAdapter(this, R.layout.left_menu_list_row, menuList));
 	    return slidingMenu;
 	}
 }
