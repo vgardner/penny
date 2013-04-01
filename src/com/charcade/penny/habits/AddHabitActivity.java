@@ -41,7 +41,7 @@ public class AddHabitActivity extends BaseActivity {
     buttonOne.setOnClickListener(new Button.OnClickListener() {
         public void onClick(View v) {
         	Context context = getApplicationContext();
-        	CharSequence text = "Hello toast!";
+        	CharSequence text = " successfully created!";
         	int duration = Toast.LENGTH_SHORT;
         	
         	EditText habitName = (EditText) findViewById(R.id.habit_name);
@@ -49,12 +49,19 @@ public class AddHabitActivity extends BaseActivity {
         	
         	SeekBar habitPrice = (SeekBar) findViewById(R.id.habit_price);
         	int habitPriceValue = habitPrice.getProgress();
-           	
-        	Toast toast = Toast.makeText(context, String.valueOf(habitPriceValue), duration);
-        	toast.show();
         	
-        	long newRowId = createHabit(habitNameText, String.valueOf(habitPriceValue));
-        	finish();
+        	Long newRowId = createHabit(habitNameText, String.valueOf(habitPriceValue));
+        	
+        	// Check if habit was successfully saved.
+        	if (newRowId instanceof Long) {   	
+            	Toast toast = Toast.makeText(context, habitNameText + text, duration);
+            	toast.show();
+        		finish();
+        	}
+        	else {
+        		Toast toast = Toast.makeText(context, "There was a problem creating your habit." + text, duration);
+            	toast.show();
+        	}
         }
     });
   }
