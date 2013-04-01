@@ -7,14 +7,17 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
 
 import com.charcade.penny.entities.Habit;
 
 public class HabitDbManager {
 	private HabitDbHelper mDbHelper;
 	private SQLiteDatabase db;
+	private Context context;
 	
 	public HabitDbManager(Context context){
+      this.context = context;
 	  mDbHelper = new HabitDbHelper(context);
 	  db = mDbHelper.getWritableDatabase();
 	}
@@ -30,10 +33,11 @@ public class HabitDbManager {
 			  "null",
 	           values);
     }
+	
     public ArrayList<Habit> getHabitList(){
-    	ArrayList<Habit> habitList = null;
+    	ArrayList<Habit> habitList = new ArrayList<Habit>();
     	Cursor cursor = db.query(HabitDbMap.TABLE_NAME, new String[] {HabitDbMap.COLUMN_NAME_HID, HabitDbMap.COLUMN_NAME_NAME, HabitDbMap.COLUMN_NAME_VALUE}, 
-                "", null, null, null, null);
+                null, null, null, null, null);
     	
     	cursor.moveToFirst();
     	while (cursor.isAfterLast() == false) {

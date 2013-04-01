@@ -1,5 +1,7 @@
 package com.charcade.penny;
 
+import java.util.ArrayList;
+
 import android.app.ActionBar.OnNavigationListener;
 import android.content.ClipData;
 import android.content.Context;
@@ -18,6 +20,8 @@ import android.widget.RelativeLayout;
 import android.widget.ShareActionProvider;
 import android.widget.Toast;
 
+import com.charcade.penny.db.HabitDbManager;
+import com.charcade.penny.entities.Habit;
 import com.charcade.penny.habits.AddHabitActivity;
 import com.slidingmenu.lib.SlidingMenu;
 
@@ -38,6 +42,14 @@ public class HomeActivity extends BaseActivity {
     setContentView(R.layout.front_main);
     
     enableSlidingMenu(slidingMenu);
+    
+    HabitDbManager habitDbManager = new HabitDbManager(this);
+    
+    ArrayList<Habit> habitList = habitDbManager.getHabitList();
+    
+    for (Habit currentHabit : habitList) {
+        Toast.makeText(this, currentHabit.getName() + "yay", Toast.LENGTH_SHORT).show();
+    }
     
     // First row.
     findViewById(R.id.myimage1).setOnTouchListener(new MyTouchListener());
