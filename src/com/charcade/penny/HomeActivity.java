@@ -51,8 +51,8 @@ public class HomeActivity extends BaseActivity {
     
     ArrayList<Habit> habitList = habitDbManager.getHabitList();
     
+    // Populate list of habits.
     for (Habit currentHabit : habitList) {
-    	
         LayoutInflater vi = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         RelativeLayout habitItemLayout = (RelativeLayout) vi.inflate(R.layout.habit_item, null);
         
@@ -61,20 +61,16 @@ public class HomeActivity extends BaseActivity {
         LinearLayout.LayoutParams params =
                 new LinearLayout.LayoutParams(400, 420);
         habitItem.setLayoutParams(params);
+        habitItem.setOnDragListener(new MyDragListener());
         
         // Adding values to habit image icon.
         ImageView habitItemIcon = (ImageView) habitItemLayout.findViewById(R.id.habit_item_icon);
         habitItemIcon.setImageResource(R.drawable.ic_beer);
+        habitItemIcon.setOnTouchListener(new MyTouchListener());
         
         LinearLayout habitRow = (LinearLayout) findViewById(R.id.layout_row_habits);
         habitRow.addView(habitItem);
     }
-    
-    // First row.
-    findViewById(R.id.myimage1).setOnTouchListener(new MyTouchListener());
-    findViewById(R.id.myimage2).setOnTouchListener(new MyTouchListener());
-    findViewById(R.id.topleft).setOnDragListener(new MyDragListener());
-    findViewById(R.id.topright).setOnDragListener(new MyDragListener());
     
     // Second row.
     findViewById(R.id.box1obj).setOnTouchListener(new MyTouchListener());
