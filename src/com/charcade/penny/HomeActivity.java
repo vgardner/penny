@@ -24,7 +24,9 @@ import android.widget.ShareActionProvider;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.charcade.penny.db.GoalDbManager;
 import com.charcade.penny.db.HabitDbManager;
+import com.charcade.penny.entities.Goal;
 import com.charcade.penny.entities.Habit;
 import com.charcade.penny.goals.AddGoalActivity;
 import com.charcade.penny.habits.AddHabitActivity;
@@ -51,6 +53,8 @@ public class HomeActivity extends BaseActivity {
     
     //Populate habits list.
     populateHabits();
+    
+    //populateGoals();
     
     // Second row.
     findViewById(R.id.box1obj).setOnTouchListener(new MyTouchListener());
@@ -168,5 +172,9 @@ public class HomeActivity extends BaseActivity {
        
         habitRow.addView(habitItem);
     }
+  }
+  public void populateGoals() {
+	  GoalDbManager goalDbManager = new GoalDbManager(this);
+	  ArrayList<Goal> goalList = goalDbManager.getGoalList();
   }
 } 

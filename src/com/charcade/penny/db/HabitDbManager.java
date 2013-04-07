@@ -59,7 +59,6 @@ public class HabitDbManager {
     	
     	cursor.moveToFirst();
     	while (cursor.isAfterLast() == false) {
-    		Habit currentHabit = new Habit();
     		habitList.add(getHabitFromCursor(cursor));
     	    cursor.moveToNext();
     	}

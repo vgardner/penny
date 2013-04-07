@@ -53,16 +53,16 @@ public class GoalDbManager {
 	 * Get list of current Goals in the database.
 	 */
     public ArrayList<Goal> getGoalList(){
-    	ArrayList<Goal> GoalList = new ArrayList<Goal>();
+    	ArrayList<Goal> goalList = new ArrayList<Goal>();
     	Cursor cursor = db.query(GoalDbMap.TABLE_NAME, new String[] {GoalDbMap.COLUMN_NAME_GID, GoalDbMap.COLUMN_NAME_NAME, GoalDbMap.COLUMN_NAME_VALUE}, 
                 null, null, null, null, null);
     	
     	cursor.moveToFirst();
     	while (cursor.isAfterLast() == false) {
-    		GoalList.add(getGoalFromCursor(cursor));
+    		goalList.add(getGoalFromCursor(cursor));
     	    cursor.moveToNext();
     	}
-    	return GoalList;
+    	return goalList;
     }
     /**
 	 * Populates a Goal from a db cursor.
