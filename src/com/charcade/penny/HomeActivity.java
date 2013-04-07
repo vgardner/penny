@@ -195,7 +195,7 @@ public class HomeActivity extends BaseActivity {
         
         // Adding values to habit image icon.
         ImageView goalItemIcon = (ImageView) goalItemLayout.findViewById(R.id.goal_item_icon);
-        goalItemIcon.setImageResource(R.drawable.ic_cig);
+        goalItemIcon.setImageResource(R.drawable.surf_trip);
         
         // Adding values to habit image icon.
         TextView goalItemText = (TextView) goalItemLayout.findViewById(R.id.goal_item_text);
