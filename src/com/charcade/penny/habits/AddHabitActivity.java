@@ -36,6 +36,7 @@ public class AddHabitActivity extends BaseActivity {
 
     setContentView(R.layout.habit_add);
     enableSlidingMenu(slidingMenu);
+    setTitle("New Habit");
     
     Button buttonOne = (Button) findViewById(R.id.habit_save);
     buttonOne.setOnClickListener(new Button.OnClickListener() {

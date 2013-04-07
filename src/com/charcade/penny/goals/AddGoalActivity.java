@@ -36,6 +36,7 @@ public class AddGoalActivity extends BaseActivity {
 
     setContentView(R.layout.goal_add);
     enableSlidingMenu(slidingMenu);
+    setTitle("New Goal");
     
     Button buttonOne = (Button) findViewById(R.id.goal_save);
     buttonOne.setOnClickListener(new Button.OnClickListener() {

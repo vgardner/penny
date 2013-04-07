@@ -26,18 +26,20 @@ import android.widget.Toast;
 
 import com.charcade.penny.db.HabitDbManager;
 import com.charcade.penny.entities.Habit;
+import com.charcade.penny.goals.AddGoalActivity;
 import com.charcade.penny.habits.AddHabitActivity;
 import com.slidingmenu.lib.SlidingMenu;
 
 public class HomeActivity extends BaseActivity {
   
-	public HomeActivity() {
-		super(R.string.app_name);
-	}
+  public HomeActivity() {
+	super(R.string.app_name);
+  }
 /** Called when the activity is first created. */
   private ShareActionProvider mShareActionProvider;
   private OnNavigationListener mOnNavigationListener;
   private SlidingMenu slidingMenu;
+  private Intent homeIntent;
 	
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -120,9 +122,14 @@ public class HomeActivity extends BaseActivity {
 	        case android.R.id.home:
 	        	slidingMenu.toggle();
 	        break;
-	        case R.id.menu_add:
-	        	Intent intent = new Intent(this, AddHabitActivity.class);
-	        	startActivity(intent);
+	        case R.id.menu_add_habit:
+	        	homeIntent = new Intent(this, AddHabitActivity.class);
+	        	startActivity(homeIntent);
+	        break;
+	        case R.id.menu_add_goal:
+	        	homeIntent = new Intent(this, AddGoalActivity.class);
+	        	startActivity(homeIntent);
+	        break;
 	        default:
 	            return super.onOptionsItemSelected(item);
 	    }
