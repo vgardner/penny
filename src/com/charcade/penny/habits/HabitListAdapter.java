@@ -44,7 +44,7 @@ public class HabitListAdapter extends ArrayAdapter{
 
             /* Take the TextView from layout and set the city's wiki link */
             TextView habitPrice = (TextView) convertView.findViewById(R.id.habit_list_price);
-            habitPrice.setText(String.valueOf(habit.getValue()));
+            habitPrice.setText("$" + String.valueOf(habit.getValue()));
 
             /* Take the ImageView from layout and set the city's image */
             ImageView habitImage = (ImageView) convertView.findViewById(R.id.habit_list_image);

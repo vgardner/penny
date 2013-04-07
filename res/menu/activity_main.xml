@@ -10,11 +10,9 @@
           android:showAsAction="ifRoom|withText">
 	    <menu>
 	        <item
-	            android:icon="@android:drawable/ic_menu_add"
 	            android:id="@+id/menu_add_habit"
 	            android:title="New Habit" />
 	        <item
-	            android:icon="@android:drawable/ic_menu_add"
 	            android:id="@+id/menu_add_goal"
 	            android:title="New Goal" />
 	    </menu>

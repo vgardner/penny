@@ -44,7 +44,7 @@ public class GoalListAdapter extends ArrayAdapter{
 
             /* Take the TextView from layout and set the city's wiki link */
             TextView GoalPrice = (TextView) convertView.findViewById(R.id.goal_list_price);
-            GoalPrice.setText(String.valueOf(Goal.getValue()));
+            GoalPrice.setText("$" + String.valueOf(Goal.getValue()));
 
             /* Take the ImageView from layout and set the city's image */
             ImageView GoalImage = (ImageView) convertView.findViewById(R.id.goal_list_image);

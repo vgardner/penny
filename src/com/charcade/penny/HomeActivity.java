@@ -54,18 +54,15 @@ public class HomeActivity extends BaseActivity {
     //Populate habits list.
     populateHabits();
     
-    //populateGoals();
+    populateGoals();
     
-    // Second row.
-    findViewById(R.id.box1obj).setOnTouchListener(new MyTouchListener());
-    findViewById(R.id.box1).setOnDragListener(new MyDragListener());
-    findViewById(R.id.box5).setOnDragListener(new MyDragListener());
   }
   
   @Override
   public void onResume() {
 	  super.onResume();
 	  refreshHabits();
+	  populateGoals();
   }
   
   private final class MyTouchListener implements OnTouchListener {
@@ -174,7 +171,34 @@ public class HomeActivity extends BaseActivity {
     }
   }
   public void populateGoals() {
-	  GoalDbManager goalDbManager = new GoalDbManager(this);
-	  ArrayList<Goal> goalList = goalDbManager.getGoalList();
+  	GoalDbManager goalDbManager = new GoalDbManager(this);
+    ArrayList<Goal> goalList = goalDbManager.getGoalList();
+    
+    LinearLayout goalRow = (LinearLayout) findViewById(R.id.layout_row_goals);
+    goalRow.removeAllViews();
+    
+    // Populate list of habits.
+    for (Goal currentGoal : goalList) {
+        LayoutInflater vi = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        RelativeLayout goalItemLayout = (RelativeLayout) vi.inflate(R.layout.goal_item, null);
+        
+        // Edit LayoutParams in habitItem.
+        RelativeLayout goalItem = (RelativeLayout) goalItemLayout.findViewById(R.id.goal_item);
+        LinearLayout.LayoutParams params =
+                new LinearLayout.LayoutParams(400, 420);
+        goalItem.setLayoutParams(params);
+        goalItem.setOnDragListener(new MyDragListener());
+        
+        // Adding values to habit image icon.
+        ImageView goalItemIcon = (ImageView) goalItemLayout.findViewById(R.id.goal_item_icon);
+        goalItemIcon.setImageResource(R.drawable.ic_beer);
+        goalItemIcon.setOnTouchListener(new MyTouchListener());
+        
+        // Adding values to habit image icon.
+        TextView goalItemText = (TextView) goalItemLayout.findViewById(R.id.goal_item_text);
+        goalItemText.setText(currentGoal.getName());
+       
+        goalRow.addView(goalItem);
+    }
   }
 } 

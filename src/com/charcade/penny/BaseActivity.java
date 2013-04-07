@@ -70,7 +70,7 @@ public class BaseActivity extends FragmentActivity {
 
         ArrayList<MenuListItem> menuList = new ArrayList<MenuListItem>();
         
-        menuList.add(new MenuListItem("Username"));
+        menuList.add(new MenuListItem("Profile"));
         menuList.add(new MenuListItem("Savings"));
         menuList.add(new MenuListItem("Newsfeed"));
         menuList.add(new MenuListItem("My Habits"));
