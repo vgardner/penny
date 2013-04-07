@@ -189,14 +189,13 @@ public class HomeActivity extends BaseActivity {
         // Edit LayoutParams in habitItem.
         RelativeLayout goalItem = (RelativeLayout) goalItemLayout.findViewById(R.id.goal_item);
         LinearLayout.LayoutParams params =
-                new LinearLayout.LayoutParams(400, 420);
+                new LinearLayout.LayoutParams(500, 520);
         goalItem.setLayoutParams(params);
         goalItem.setOnDragListener(new MyDragListener());
         
         // Adding values to habit image icon.
         ImageView goalItemIcon = (ImageView) goalItemLayout.findViewById(R.id.goal_item_icon);
-        goalItemIcon.setImageResource(R.drawable.ic_beer);
-        goalItemIcon.setOnTouchListener(new MyTouchListener());
+        goalItemIcon.setImageResource(R.drawable.ic_cig);
         
         // Adding values to habit image icon.
         TextView goalItemText = (TextView) goalItemLayout.findViewById(R.id.goal_item_text);
