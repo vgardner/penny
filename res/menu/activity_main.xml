@@ -7,7 +7,18 @@
 	<item android:id="@+id/menu_add"
           android:icon="@android:drawable/ic_menu_add"
           android:title="@string/menu_add"
-          android:showAsAction="ifRoom|withText" />
+          android:showAsAction="ifRoom|withText">
+	    <menu>
+	        <item
+	            android:icon="@android:drawable/ic_menu_add"
+	            android:id="@+id/menu_add_habit"
+	            android:title="New Habit" />
+	        <item
+	            android:icon="@android:drawable/ic_menu_add"
+	            android:id="@+id/menu_add_goal"
+	            android:title="New Goal" />
+	    </menu>
+    </item>
 	<item android:id="@+id/menu_share"
           android:title="@string/menu_share"
           android:showAsAction="ifRoom"
