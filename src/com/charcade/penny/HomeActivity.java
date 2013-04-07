@@ -72,9 +72,6 @@ public class HomeActivity extends BaseActivity {
         DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
         view.startDrag(data, shadowBuilder, view, 0);
         view.setVisibility(View.INVISIBLE);
-        
-        Context context = getApplicationContext();
-        Toast.makeText(context, "Touched!", Toast.LENGTH_SHORT).show();
         return true;
       } else {
         return false;
@@ -107,6 +104,12 @@ public class HomeActivity extends BaseActivity {
         RelativeLayout container = (RelativeLayout) v;
         container.addView(view);
         view.setVisibility(View.VISIBLE);
+        
+        Context context = getApplicationContext();
+        homeIntent = new Intent(context, TransactionSuccessActivity.class);
+    	startActivity(homeIntent);
+        //Context context = getApplicationContext();
+        //Toast.makeText(context, "Dropped!", Toast.LENGTH_SHORT).show();
         break;
       case DragEvent.ACTION_DRAG_ENDED:
         v.setBackgroundDrawable(normalShape);
