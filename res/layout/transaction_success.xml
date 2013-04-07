@@ -27,20 +27,37 @@
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
                 android:textSize="20dp"
-                android:text="Name Surname" />
+                android:text="Goal name" />
             <TextView
-                android:id="@+id/profile_view_email"
+                android:id="@+id/profile_view_saved"
                 android:layout_width="match_parent"
                 android:layout_height="25dp"
                 android:textSize="22dp"
-                android:text="$00.00" />
+                android:text="$20.00" />
             <TextView
                 android:id="@+id/profile_view_user_since"
                 android:layout_width="match_parent"
-                android:layout_height="25dp"
+                android:layout_height="wrap_content"
                 android:textSize="15dp"
-                android:text="User since: 16/10/1986" />
+                android:text="You saved 20 %, $9.50 out of $10.00" />
         </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+        <TextView
+                android:id="@+id/profile_view_message_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="21dp"
+                android:text="Well done!" />
+         <TextView
+                android:id="@+id/profile_view_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="Bringing your own lunchbox to the office is a great way of saving for your surftrip. Your total saved: £ 10" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -53,7 +70,7 @@
             android:id="@+id/transaction_view_image_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/surf_trip" />
+            android:src="@drawable/ic_cig" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -63,24 +80,18 @@
             <TextView
                 android:id="@+id/profile_view_name"
                 android:layout_width="match_parent"
-                android:layout_height="32dp"
-                android:textSize="20dp"
-                android:text="Name Surname" />
-            <TextView
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:text="You have reached 1/10 of your goal by saving on:" />
+			<TextView
                 android:id="@+id/profile_view_email"
                 android:layout_width="match_parent"
                 android:layout_height="25dp"
                 android:textSize="22dp"
                 android:text="$00.00" />
-            <TextView
-                android:id="@+id/profile_view_user_since"
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:textSize="15dp"
-                android:text="User since: 16/10/1986" />
         </LinearLayout>
     </LinearLayout> 
-     <LinearLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
@@ -91,9 +102,9 @@
             android:id="@+id/transaction_view_image_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/surf_trip" />
+            android:src="@drawable/ic_beer" />
 
-        <LinearLayout
+       <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
@@ -103,19 +114,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
                 android:textSize="20dp"
-                android:text="Name Surname" />
-            <TextView
-                android:id="@+id/profile_view_email"
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:textSize="22dp"
-                android:text="$00.00" />
-            <TextView
-                android:id="@+id/profile_view_user_since"
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:textSize="15dp"
-                android:text="User since: 16/10/1986" />
+                android:text="X 3   $9.50" />
+
         </LinearLayout>
+
     </LinearLayout>
 </LinearLayout>
