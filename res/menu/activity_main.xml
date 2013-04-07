@@ -26,4 +26,8 @@
           android:icon="@android:drawable/ic_menu_search"
           android:showAsAction="ifRoom|collapseActionView"
           android:actionViewClass="android.widget.SearchView" />
+	<item android:id="@+id/menu_tutorial"
+          android:icon="@android:drawable/ic_menu_add"
+          android:title="Tutorial"
+          android:showAsAction="ifRoom|withText" />
 </menu>
