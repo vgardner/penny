@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:maxHeight="5dp"
+            android:maxWidth="5dp"
+            android:id="@+id/goal_view_image_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/anonymous_user" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/profile_view_name"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:textSize="20dp"
+                android:text="Name Surname" />
+            <TextView
+                android:id="@+id/profile_view_email"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:textSize="22dp"
+                android:text="$00.00" />
+            <TextView
+                android:id="@+id/profile_view_user_since"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:textSize="15dp"
+                android:text="User since: 16/10/1986" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <ListView
+            android:id="@+id/goal_view_list_history"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/list_padding"
+            android:paddingRight="@dimen/list_padding" />
+
+        <TextView
+            android:id="@android:id/empty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="You have not savings in your account yet." />
+    </LinearLayout>
+
+</LinearLayout>

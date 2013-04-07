@@ -55,6 +55,10 @@ public class MenuListAdapter extends ArrayAdapter{
             convertView.setId(position);
             convertView.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
+                	if (v.getId() == 0) {
+                		Intent intent = new Intent(context, ViewProfileActivity.class);
+                		context.startActivity(intent);
+                	}
                 	if (v.getId() == 3) {
                 		Intent intent = new Intent(context, ListHabitsActivity.class);
                 		context.startActivity(intent);

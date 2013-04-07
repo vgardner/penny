@@ -131,6 +131,10 @@ public class HomeActivity extends BaseActivity {
 	        	homeIntent = new Intent(this, AddGoalActivity.class);
 	        	startActivity(homeIntent);
 	        break;
+	        case R.id.menu_settings:
+	        	homeIntent = new Intent(this, SettingsActivity.class);
+	        	startActivity(homeIntent);
+	        break;
 	        default:
 	            return super.onOptionsItemSelected(item);
 	    }
