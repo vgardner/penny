@@ -50,6 +50,10 @@
             android:name="com.charcade.penny.goals.ViewGoalActivity"
             android:label="@string/app_name" >   
         </activity>
+        <activity
+            android:name="com.charcade.penny.SettingsActivity"
+            android:label="@string/app_name" >   
+        </activity>
     </application>
 
 </manifest>

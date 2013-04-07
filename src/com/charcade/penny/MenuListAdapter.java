@@ -63,6 +63,10 @@ public class MenuListAdapter extends ArrayAdapter{
                 		Intent intent = new Intent(context, ListGoalsActivity.class);
                 		context.startActivity(intent);
                 	}
+                	if (v.getId() == 5) {
+                		Intent intent = new Intent(context, SettingsActivity.class);
+                		context.startActivity(intent);
+                	}
                 }
             });
             return convertView;

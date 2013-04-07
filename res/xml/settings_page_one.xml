@@ -1,0 +1,34 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory 
+        android:title="Settings"
+        android:key="pref_key_storage_settings">
+        <CheckBoxPreference
+            android:key="pref_key_auto_delete"
+            android:summary="This does some stuf."
+            android:title="Enable Sync"
+            android:defaultValue="false"/>
+        <Preference 
+            android:icon="@android:drawable/ic_menu_save"
+            android:key="sync_now"
+            android:dependency="pref_key_auto_delete"
+            android:summary="Sync local data with servers."
+            android:title="Sync Now"/>
+        <CheckBoxPreference
+            android:icon="@android:drawable/ic_menu_share"
+            android:key="pref_key_auto_delete"
+            android:summary="Automatically share your activity on social networks."
+            android:title="Enable social sharing"
+            android:defaultValue="false"/>
+        <CheckBoxPreference
+            android:icon="@android:drawable/ic_dialog_alert"
+            android:key="pref_key_auto_delete"
+            android:summary="Notifies about subscribed friend activity."
+            android:title="Enable Notifications"
+            android:defaultValue="false"/>
+        <Preference android:title="About Penny"
+             android:icon="@android:drawable/ic_menu_help">
+    		<intent android:action="android.intent.action.VIEW"
+            android:data="http://www.vgardner.co.uk" />
+		</Preference>
+    </PreferenceCategory>
+</PreferenceScreen>
