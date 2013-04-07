@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 import com.charcade.penny.BaseActivity;
 import com.charcade.penny.R;
-import com.charcade.penny.db.HabitDbManager;
-import com.charcade.penny.entities.Habit;
+import com.charcade.penny.db.GoalDbManager;
+import com.charcade.penny.entities.Goal;
 import com.slidingmenu.lib.SlidingMenu;
 
 public class ViewGoalActivity extends BaseActivity {
@@ -27,19 +27,19 @@ public class ViewGoalActivity extends BaseActivity {
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-    setContentView(R.layout.habit_view);
+    setContentView(R.layout.goal_view);
     enableSlidingMenu(slidingMenu);
     // Get parameters from intent.
     Intent intent = getIntent();
-    String habitId = intent.getStringExtra("hid");
-    // Get habit db manager.
-    HabitDbManager habitDbManager = new HabitDbManager(this);
-    Habit habit = habitDbManager.getHabit(Integer.parseInt(habitId));
+    String goalId = intent.getStringExtra("hid");
+    // Get goal db manager.
+    GoalDbManager goalDbManager = new GoalDbManager(this);
+    Goal goal = goalDbManager.getGoal(Integer.parseInt(goalId));
     // Set view element texts and images.
-    this.setTitle(habit.getName());
+    this.setTitle(goal.getName());
     
-    TextView habitViewPriceText = (TextView) findViewById(R.id.habit_view_price_text);
-    habitViewPriceText.setText("$" + habit.getValue());
+    TextView goalViewPriceText = (TextView) findViewById(R.id.goal_view_price_text);
+    goalViewPriceText.setText("$" + goal.getValue());
     
   }
   @Override
@@ -52,8 +52,8 @@ public class ViewGoalActivity extends BaseActivity {
             return super.onOptionsItemSelected(item);
     }
   }
-  public long createHabit(String title, String value){
-	  HabitDbManager habitDbManager = new HabitDbManager(this);
-	  return habitDbManager.createHabit(title, value);
+  public long createGoal(String title, String value){
+	  GoalDbManager goalDbManager = new GoalDbManager(this);
+	  return goalDbManager.createGoal(title, value);
   }
 }

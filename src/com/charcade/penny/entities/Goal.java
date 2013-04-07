@@ -6,6 +6,7 @@ import java.security.Timestamp;
 public class Goal {
 	private int gid;
 	private String name;
+	private BigDecimal value;
 	private BigDecimal TotalSaved;
 	private String Description;
 	private int weight;
@@ -73,5 +74,11 @@ public class Goal {
 	}
 	public void setIcon(String icon) {
 		this.icon = icon;
+	}
+	public BigDecimal getValue() {
+		return value;
+	}
+	public void setValue(BigDecimal value) {
+		this.value = value;
 	}
 }

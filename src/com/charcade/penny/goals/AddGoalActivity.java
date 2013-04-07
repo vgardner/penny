@@ -15,9 +15,9 @@ import android.widget.Toast;
 
 import com.charcade.penny.BaseActivity;
 import com.charcade.penny.R;
-import com.charcade.penny.db.HabitDbHelper;
-import com.charcade.penny.db.HabitDbManager;
-import com.charcade.penny.db.HabitDbMap;
+import com.charcade.penny.db.GoalDbHelper;
+import com.charcade.penny.db.GoalDbManager;
+import com.charcade.penny.db.GoalDbMap;
 import com.slidingmenu.lib.SlidingMenu;
 
 public class AddGoalActivity extends BaseActivity {
@@ -34,32 +34,32 @@ public class AddGoalActivity extends BaseActivity {
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-    setContentView(R.layout.habit_add);
+    setContentView(R.layout.goal_add);
     enableSlidingMenu(slidingMenu);
     
-    Button buttonOne = (Button) findViewById(R.id.habit_save);
+    Button buttonOne = (Button) findViewById(R.id.goal_save);
     buttonOne.setOnClickListener(new Button.OnClickListener() {
         public void onClick(View v) {
         	Context context = getApplicationContext();
         	CharSequence text = " successfully created!";
         	int duration = Toast.LENGTH_SHORT;
         	
-        	EditText habitName = (EditText) findViewById(R.id.habit_name);
-        	String habitNameText = habitName.getText().toString();
+        	EditText GoalName = (EditText) findViewById(R.id.goal_name);
+        	String GoalNameText = GoalName.getText().toString();
         	
-        	SeekBar habitPrice = (SeekBar) findViewById(R.id.habit_price);
-        	int habitPriceValue = habitPrice.getProgress();
+        	SeekBar GoalPrice = (SeekBar) findViewById(R.id.goal_price);
+        	int GoalPriceValue = GoalPrice.getProgress();
         	
-        	Long newRowId = createHabit(habitNameText, String.valueOf(habitPriceValue));
+        	Long newRowId = createGoal(GoalNameText, String.valueOf(GoalPriceValue));
         	
-        	// Check if habit was successfully saved.
+        	// Check if Goal was successfully saved.
         	if (newRowId instanceof Long) {   	
-            	Toast toast = Toast.makeText(context, habitNameText + text, duration);
+            	Toast toast = Toast.makeText(context, GoalNameText + text, duration);
             	toast.show();
         		finish();
         	}
         	else {
-        		Toast toast = Toast.makeText(context, "There was a problem creating your habit." + text, duration);
+        		Toast toast = Toast.makeText(context, "There was a problem creating your Goal." + text, duration);
             	toast.show();
         	}
         }
@@ -75,8 +75,8 @@ public class AddGoalActivity extends BaseActivity {
             return super.onOptionsItemSelected(item);
     }
   }
-  public long createHabit(String title, String value){
-	  HabitDbManager habitDbManager = new HabitDbManager(this);
-	  return habitDbManager.createHabit(title, value);
+  public long createGoal(String title, String value){
+	  GoalDbManager GoalDbManager = new GoalDbManager(this);
+	  return GoalDbManager.createGoal(title, value);
   }
 }

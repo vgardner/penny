@@ -13,14 +13,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.charcade.penny.R;
-import com.charcade.penny.entities.Habit;
+import com.charcade.penny.entities.Goal;
 
 public class GoalListAdapter extends ArrayAdapter{
 
       private int resource;
       private LayoutInflater inflater;
       private Context context;
-      private Habit currentHabit;
+      private Goal currentGoal;
       
       public GoalListAdapter (Context ctx, int resourceId, List objects) {
 		super(ctx, resourceId, objects);
@@ -36,31 +36,31 @@ public class GoalListAdapter extends ArrayAdapter{
             convertView = ( RelativeLayout ) inflater.inflate( resource, null );
 
             /* Extract the city's object to show */
-            Habit habit = (Habit) getItem(position);
+            Goal Goal = (Goal) getItem(position);
             
             /* Take the TextView from layout and set the city's name */
-            TextView habitName = (TextView) convertView.findViewById(R.id.habit_list_name);
-            habitName.setText(habit.getName());
+            TextView GoalName = (TextView) convertView.findViewById(R.id.goal_list_name);
+            GoalName.setText(Goal.getName());
 
             /* Take the TextView from layout and set the city's wiki link */
-            TextView habitPrice = (TextView) convertView.findViewById(R.id.habit_list_price);
-            habitPrice.setText(String.valueOf(habit.getValue()));
+            TextView GoalPrice = (TextView) convertView.findViewById(R.id.goal_list_price);
+            GoalPrice.setText(String.valueOf(Goal.getValue()));
 
             /* Take the ImageView from layout and set the city's image */
-            ImageView habitImage = (ImageView) convertView.findViewById(R.id.habit_list_image);
+            ImageView GoalImage = (ImageView) convertView.findViewById(R.id.goal_list_image);
             //String uri = "drawable/" + city.getImage();
             //int imageResource = context.getResources().getIdentifier(uri, null, context.getPackageName());
             //Drawable image = context.getResources().getDrawable(imageResource);
-            habitImage.setImageResource(R.drawable.ic_tea);
+            GoalImage.setImageResource(R.drawable.ic_tea);
             
-            // Assign habit id to view id.
-            convertView.setId(habit.getHid());
+            // Assign Goal id to view id.
+            convertView.setId(Goal.getGid());
             
             convertView.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                	Intent viewHabitIntent = new Intent(context, ViewGoalActivity.class);
-                	viewHabitIntent.putExtra("hid", String.valueOf(v.getId()));
-                    context.startActivity(viewHabitIntent);
+                	Intent viewGoalIntent = new Intent(context, ViewGoalActivity.class);
+                	viewGoalIntent.putExtra("hid", String.valueOf(v.getId()));
+                    context.startActivity(viewGoalIntent);
                 }
             });
 

@@ -30,7 +30,7 @@
             android:text="Habit" />
 
         <EditText
-            android:id="@+id/habit_name"
+            android:id="@+id/goal_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10" >
@@ -47,7 +47,7 @@
         android:text="Price" />
 
     <SeekBar
-        android:id="@+id/habit_price"
+        android:id="@+id/goal_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -57,7 +57,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/habit_save"
+        android:id="@+id/goal_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Save" />

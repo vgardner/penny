@@ -4,19 +4,16 @@ import java.util.List;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.charcade.penny.entities.MenuListItem;
-import com.charcade.penny.habits.AddHabitActivity;
+import com.charcade.penny.goals.ListGoalsActivity;
 import com.charcade.penny.habits.ListHabitsActivity;
 
 public class MenuListAdapter extends ArrayAdapter{
@@ -58,9 +55,12 @@ public class MenuListAdapter extends ArrayAdapter{
             convertView.setId(position);
             convertView.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-
                 	if (v.getId() == 3) {
                 		Intent intent = new Intent(context, ListHabitsActivity.class);
+                		context.startActivity(intent);
+                	}
+                	if (v.getId() == 4) {
+                		Intent intent = new Intent(context, ListGoalsActivity.class);
                 		context.startActivity(intent);
                 	}
                 }

@@ -10,69 +10,68 @@ import android.database.CursorIndexOutOfBoundsException;
 import android.database.sqlite.SQLiteDatabase;
 import android.widget.Toast;
 
-import com.charcade.penny.entities.Habit;
+import com.charcade.penny.entities.Goal;
 
 public class GoalDbManager {
-	private HabitDbHelper mDbHelper;
+	private GoalDbHelper mDbHelper;
 	private SQLiteDatabase db;
 	private Context context;
 	
 	public GoalDbManager(Context context){
       this.context = context;
-	  mDbHelper = new HabitDbHelper(context);
+	  mDbHelper = new GoalDbHelper(context);
 	  db = mDbHelper.getWritableDatabase();
 	}
 	/**
-	 * Save a new habit in the database.
+	 * Save a new Goal in the database.
 	 */
-	public long createHabit(String title, String value){	  
+	public long createGoal(String title, String value){	  
 	  ContentValues values = new ContentValues();
-	  values.put(HabitDbMap.COLUMN_NAME_NAME, title);
-	  values.put(HabitDbMap.COLUMN_NAME_VALUE, value);
+	  values.put(GoalDbMap.COLUMN_NAME_NAME, title);
+	  values.put(GoalDbMap.COLUMN_NAME_VALUE, value);
 
 	  return db.insert(
-			  HabitDbMap.TABLE_NAME,
+			  GoalDbMap.TABLE_NAME,
 			  "null",
 	           values);
     }
 	/**
-	 * Get a habit for a specific hid.
+	 * Get a Goal for a specific gid.
 	 */
-	public Habit getHabit(Integer hid){
-		Habit habit = new Habit();
+	public Goal getGoal(Integer gid){
+		Goal Goal = new Goal();
 		try {
-			Cursor cursor = db.rawQuery("SELECT * FROM " + HabitDbMap.TABLE_NAME + " WHERE " + HabitDbMap.COLUMN_NAME_HID + " = '"+ hid + "'", null);
+			Cursor cursor = db.rawQuery("SELECT * FROM " + GoalDbMap.TABLE_NAME + " WHERE " + GoalDbMap.COLUMN_NAME_GID + " = '"+ gid + "'", null);
 			cursor.moveToFirst();
-			habit = getHabitFromCursor(cursor);
+			Goal = getGoalFromCursor(cursor);
 		} catch (CursorIndexOutOfBoundsException e) {
 			Toast.makeText(context, "Nothing was found.", Toast.LENGTH_SHORT).show();
 		}
-		return habit;
+		return Goal;
 	}
 	/**
-	 * Get list of current habits in the database.
+	 * Get list of current Goals in the database.
 	 */
-    public ArrayList<Habit> getHabitList(){
-    	ArrayList<Habit> habitList = new ArrayList<Habit>();
-    	Cursor cursor = db.query(HabitDbMap.TABLE_NAME, new String[] {HabitDbMap.COLUMN_NAME_HID, HabitDbMap.COLUMN_NAME_NAME, HabitDbMap.COLUMN_NAME_VALUE}, 
+    public ArrayList<Goal> getGoalList(){
+    	ArrayList<Goal> GoalList = new ArrayList<Goal>();
+    	Cursor cursor = db.query(GoalDbMap.TABLE_NAME, new String[] {GoalDbMap.COLUMN_NAME_GID, GoalDbMap.COLUMN_NAME_NAME, GoalDbMap.COLUMN_NAME_VALUE}, 
                 null, null, null, null, null);
     	
     	cursor.moveToFirst();
     	while (cursor.isAfterLast() == false) {
-    		Habit currentHabit = new Habit();
-    		habitList.add(getHabitFromCursor(cursor));
+    		GoalList.add(getGoalFromCursor(cursor));
     	    cursor.moveToNext();
     	}
-    	return habitList;
+    	return GoalList;
     }
     /**
-	 * Populates a habit from a db cursor.
+	 * Populates a Goal from a db cursor.
 	 */
-    private Habit getHabitFromCursor(Cursor cursor) {
-    	Habit habit = new Habit();
-    	habit.setHid(cursor.getInt(cursor.getColumnIndex(HabitDbMap.COLUMN_NAME_HID)));
-    	habit.setName(cursor.getString(cursor.getColumnIndex(HabitDbMap.COLUMN_NAME_NAME)));
-    	habit.setValue(BigDecimal.valueOf(cursor.getInt(cursor.getColumnIndex(HabitDbMap.COLUMN_NAME_VALUE))));
-    	return habit;
+    private Goal getGoalFromCursor(Cursor cursor) {
+    	Goal Goal = new Goal();
+    	Goal.setGid(cursor.getInt(cursor.getColumnIndex(GoalDbMap.COLUMN_NAME_GID)));
+    	Goal.setName(cursor.getString(cursor.getColumnIndex(GoalDbMap.COLUMN_NAME_NAME)));
+    	Goal.setValue(BigDecimal.valueOf(cursor.getInt(cursor.getColumnIndex(GoalDbMap.COLUMN_NAME_VALUE))));
+    	return Goal;
     }
 }
